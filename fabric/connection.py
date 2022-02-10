@@ -697,7 +697,7 @@ class Connection(Context):
 
     @opens
     def create_session(self):
-        channel = self.transport.open_session()
+        channel = self.transport.open_session(timeout=self.connect_timeout)
         if self.forward_agent:
             self._agent_handler = AgentRequestHandler(channel)
         return channel
